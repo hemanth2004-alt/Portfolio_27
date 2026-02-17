@@ -214,12 +214,17 @@ function initPortfolio() {
     }
     
     function runAnimations() {
-        // Disable scroll animations on mobile screens (max 768px)
+        // On mobile: immediately show all animated elements (no scroll-trigger needed)
         if (window.innerWidth <= 768) {
             animateElements.forEach(element => {
-                element.style.animationPlayState = 'running';
                 element.style.opacity = '1';
                 element.style.transform = 'none';
+                element.style.animationPlayState = 'running';
+            });
+            // Also ensure all project cards inside animate-in containers are flat & visible
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.transform = 'none';
+                card.style.opacity = '1';
             });
             return;
         }
@@ -249,6 +254,7 @@ function initPortfolio() {
     if (animateElements.length) {
         runAnimations();
         window.addEventListener('scroll', runAnimations);
+        window.addEventListener('resize', runAnimations);
     }
     
     // Smooth scrolling
