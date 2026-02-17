@@ -920,9 +920,19 @@ html {
     }
 }
 
+/* Disable 3D project card animation on mobile */
+@media (max-width: 768px) {
+    .project-card {
+        transform: none !important;
+    }
+    .project-card:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+    }
+}
+
 /* Fix project cards on mobile */
-@media (max-width: 640px) {
-    .grid.md\:grid-cols-3 {
+@media (max-width: 640px) {    .grid.md\:grid-cols-3 {
         grid-template-columns: 1fr;
         gap: 16px;
     }
