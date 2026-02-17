@@ -214,6 +214,15 @@ function initPortfolio() {
     }
     
     function runAnimations() {
+        // Disable scroll animations on mobile screens (max 768px)
+        if (window.innerWidth <= 768) {
+            animateElements.forEach(element => {
+                element.style.animationPlayState = 'running';
+                element.style.opacity = '1';
+                element.style.transform = 'none';
+            });
+            return;
+        }
         animateElements.forEach(element => {
             if (isInViewport(element)) {
                 element.style.animationPlayState = 'running';
