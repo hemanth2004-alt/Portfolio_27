@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -677,25 +678,53 @@ html {
     }
 }
 
-/* Skills Section Icons - Mobile Fixes */
+/* ===== SKILLS SECTION - MOBILE FIX ===== */
 @media (max-width: 768px) {
-    .profile-pic.flex.flex-col.items-center img {
-        width: 40px !important;
-        height: 40px !important;
-        object-fit: contain;
-        display: block;
+    .skill-card {
+        padding: 12px 10px;
+        min-width: unset;
+        width: 100%;
+    }
+
+    .skill-card i,
+    .skill-card svg {
+        font-size: 1.5rem;  
+    }
+
+    .skill-card p,
+    .skill-card span,
+    .skill-card .skill-name {
+        font-size: 0.75rem; 
+    }
+
+    /* If skills are in a grid */
+    .skills-grid,
+    .skills-container {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 8px;
     }
 }
 
 @media (max-width: 480px) {
-    .profile-pic.flex.flex-col.items-center {
-        width: calc(33.33% - 8px);
-        min-width: 80px;
+    .skill-card {
+        padding: 8px 6px;
     }
-    
-    .profile-pic.flex.flex-col.items-center img {
-        width: 32px !important;
-        height: 32px !important;
+
+    .skill-card i,
+    .skill-card svg {
+        font-size: 1.2rem;
+    }
+
+    .skill-card p,
+    .skill-card span,
+    .skill-card .skill-name {
+        font-size: 0.65rem;
+    }
+
+    .skills-grid,
+    .skills-container {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 6px;
     }
 }
 
