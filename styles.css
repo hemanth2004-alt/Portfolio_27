@@ -366,6 +366,23 @@ img {
     transition: all 0.5s ease-in-out;
 }
 
+/* Animate-in: elements start invisible and slide up when triggered by JS */
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: slideUpFadeIn 0.6s ease forwards;
+    animation-play-state: paused;
+}
+
 /* Animation for hidden projects when they appear */
 .project-card.animate-in {
     animation: fadeInUp 0.6s ease forwards;
@@ -920,30 +937,27 @@ html {
     }
 }
 
-/* Disable 3D project card animation on mobile */
-@media (max-width: 768px) {
+/* Fix project cards on mobile */
+@media (max-width: 640px) {
+    /* Reset the 3D rotateY transform so cards display flat on mobile */
     .project-card {
         transform: none !important;
     }
-    .project-card:hover {
-        transform: translateY(-4px) !important;
-        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
-    }
-}
 
-/* Fix project cards on mobile */
-@media (max-width: 640px) {    .grid.md\:grid-cols-3 {
+    .grid.md\:grid-cols-3 {
         grid-template-columns: 1fr;
         gap: 16px;
     }
     
     .project-card {
-        max-width: 100%;
+        max-width: 80%;
+        margin: 0 auto;
+        border-radius: 10px;
     }
     
     .project-card .h-60 {
-        height: auto;
-        min-height: 200px;
+        height: 140px;
+        min-height: 140px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -951,11 +965,31 @@ html {
     }
     
     .project-card img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 140px;
         max-width: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
+    }
+
+    .project-card .p-6 {
+        padding: 10px 12px;
+    }
+
+    .project-card h3 {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .project-card p {
+        font-size: 11px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .project-card a {
+        font-size: 11px;
+        padding: 5px 10px;
     }
 }
 
